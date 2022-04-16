@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="shortcut icon" href="fav.png" type="image/x-icon" />
+    <link rel="stylesheet" href="app.css" />
+    <title>Image Editor</title>
+  </head>
+  <body>
+    <div class="img-editor">
+      <div class="side-bar">
+        <div class="filter-container">
+          <label for="blur">Blur</label>
+          <input type="range" id="blur" value="0" min="0" max="10" step="0.1" />
+
+          <label for="contrast">Contrast</label>
+          <input type="range" id="contrast" value="100" min="0" max="200" />
+
+          <label for="hue">Hue-Rotate</label>
+          <input type="range" id="hue" value="0" min="0" max="360" />
+
+          <label for="sepia">Sepia</label>
+          <input type="range" id="sepia" value="0" min="0" max="100" />
+
+          <label for="GrayScale">Gray Scale</label>
+          <input type="range" id="GrayScale" value="0" min="0" max="200" />
+
+          <label for="opacity">Opacity</label>
+          <input type="range" id="opacity" value="100" min="0" max="100" />
+
+          <label for="invert">Invert</label>
+          <input type="range" id="invert" value="0" min="0" max="100" />
+
+          <label for="saturate">Saturate</label>
+          <input type="range" id="saturate" value="100" min="0" max="200" />
+
+          <label for="brightness">Brightness</label>
+          <input type="range" id="brightness" value="100" min="0" max="200" />
+
+          <div class="flip-buttons">
+            <div class="flip-option">
+              <input type="radio" name="flip" id="noFlip" checked />
+              <label for="noFlip">No flip</label>
+            </div>
+
+            <div class="flip-option">
+              <input type="radio" name="flip" id="flipX" />
+              <label for="flipX">Flip x</label>
+            </div>
+
+            <div class="flip-option">
+              <input type="radio" name="flip" id="flipY" />
+              <label for="flipY">Flip Y</label>
+            </div>
+          </div>
+
+          <div class="btn-container">
+            <button type="reset" class="reset">Reset</button>
+            <button class="download" type="button" onclick="download()">
+              Download
+            </button>
+            <label for="upload"><i class="fa fa-upload"></i></label>
+            <input type="file" id="upload" accept="image/*" />
+          </div>
+        </div>
+      </div>
+
+      <div class="img-bar">
+        <div class="img-container">
+          <img src="" alt="Upload Your Image" class="choosenImg" />
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+      integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"
+      integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      // download button
+      function download() {
+        domtoimage.toBlob(document.querySelector("img")).then(function (blob) {
+          window.saveAs(blob, "File.png");
+        });
+      }
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>

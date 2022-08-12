@@ -16,7 +16,34 @@ let uploadBtn = document.querySelector("#upload");
 let downloadBtn = document.querySelector(".download");
 let choosenImg = document.querySelector(".choosenImg");
 let imgBox = document.querySelector(".img-container");
-// zoom effect
+let sliderInputs = document.querySelectorAll(".slider-inputs");
+// -----------applying styles-----------
+sliderInputs.forEach((item) => {
+  item.addEventListener("input", function (e) {
+    let allFilters = `grayscale(${GrayScaleFilter.value}%) blur(${blurFilter.value}px) sepia(${sepiaFilter.value}) saturate(${saturateFilter.value}) opacity(${opacityFilter.value}) brightness(${brightnessFilter.value}%) contrast(${contrastFilter.value}%) hue-rotate(${hueFilter.value}deg) invert(${invertFilter.value}%)`;
+    choosenImg.style.filter = allFilters;
+  });
+  resetBtn.addEventListener("click", function (e) {
+    // -----------reset img styles-----------
+    let resetImgStyles = `grayscale(0%) blur(0px) sepia(0) saturate(1) opacity(1) brightness(100%) contrast(100%) hue-rotate(0deg) invert(0%)`;
+    choosenImg.style.filter = resetImgStyles;
+    // -----------reset input values-----------
+    GrayScaleFilter.value = 0;
+    blurFilter.value = 0;
+    sepiaFilter.value = 0;
+    saturateFilter.value = 1;
+    opacityFilter.value = 1;
+    brightnessFilter.value = 100;
+    contrastFilter.value = 100;
+    hueFilter.value = 0;
+    invertFilter.value = 0;
+    console.log(GrayScaleFilter.value);
+    // -----------flip reset-----------
+    (noFlipBtn.checked = true), (choosenImg.style.transform = "none");
+  });
+});
+// -----------reset button-----------
+// -----------zoom effect-----------
 imgBox.addEventListener("mousemove", onZoom);
 imgBox.addEventListener("mouseover", onZoom);
 imgBox.addEventListener("mouseleave", offZoom);
@@ -34,44 +61,6 @@ function offZoom(e) {
 uploadBtn.addEventListener("change", function (e) {
   choosenImg.src = URL.createObjectURL(e.target.files[0]);
 });
-// -----------effects-----------
-// blur
-blurFilter.addEventListener("input", () => {
-  choosenImg.style.filter = `blur(${blurFilter.value}px)`;
-});
-// contrast
-contrastFilter.addEventListener("input", () => {
-  choosenImg.style.filter = `contrast(${contrastFilter.value}%)`;
-});
-// hue
-hueFilter.addEventListener("input", () => {
-  choosenImg.style.filter = `hue-rotate(${hueFilter.value}deg)`;
-});
-// sepia
-sepiaFilter.addEventListener("input", () => {
-  choosenImg.style.filter = `sepia(${sepiaFilter.value}%)`;
-});
-// gray scale
-GrayScale.addEventListener("input", () => {
-  choosenImg.style.filter = `grayscale(${GrayScale.value}%)`;
-});
-// opacity
-opacityFilter.addEventListener("input", () => {
-  choosenImg.style.filter = `opacity(${opacityFilter.value}%)`;
-});
-// invert
-invertFilter.addEventListener("input", () => {
-  choosenImg.style.filter = `invert(${invertFilter.value}%)`;
-});
-// saturate
-saturateFilter.addEventListener("input", () => {
-  choosenImg.style.filter = `saturate(${saturateFilter.value}%)`;
-});
-// brightness
-brightnessFilter.addEventListener("input", () => {
-  choosenImg.style.filter = `brightness(${brightnessFilter.value}%)`;
-});
-
 // -----------flip buttons-----------
 // flip x
 flipXBtn.addEventListener("click", () => {
@@ -85,32 +74,3 @@ flipYBtn.addEventListener("click", () => {
 noFlipBtn.addEventListener("click", () => {
   choosenImg.style.transform = "none";
 });
-// -----------reset button-----------
-resetBtn.addEventListener("click", resetter);
-function resetter() {
-  // -----------blur reset-----------
-  (blurFilter.value = 0), (choosenImg.style.filter = `blurFilter(0px)`);
-  // -----------contrast reset-----------
-  (contrastFilter.value = 100),
-    (choosenImg.style.filter = `contrastFilter(100%)`);
-  // -----------hue reset-----------
-  (hueFilter.value = 0), (choosenImg.style.filter = `hueFilter(0deg)`);
-  // -----------sepia reset-----------
-  (sepiaFilter.value = 0), (choosenImg.style.filter = `sepiaFilter(0%)`);
-  // -----------grayscale reset-----------
-  (GrayScale.value = 0), (choosenImg.style.filter = `GrayScale(0%)`);
-  // -----------opacity reset-----------
-  (opacityFilter.value = 100),
-    (choosenImg.style.filter = `opacityFilter(100%)`);
-  // -----------invert reset-----------
-  (invertFilter.value = 0), (choosenImg.style.filter = `invertFilter(0%)`);
-  // -----------saturate reset-----------
-  (saturateFilter.value = 100),
-    (choosenImg.style.filter = `saturateFilter(100%)`);
-  // -----------brightness reset-----------
-  (brightnessFilter.value = 100),
-    ((choosenImg.style.filter = `brightness(100%)`),
-    // -----------flip reset-----------
-    (noFlipBtn.checked = true)),
-    (choosenImg.style.transform = "none");
-}

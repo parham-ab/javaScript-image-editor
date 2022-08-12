@@ -110,18 +110,6 @@ input[type="range"]:focus::-ms-fill-lower {
 input[type="range"]:focus::-ms-fill-upper {
   background: #b3e3db;
 }
-/* input[type="radio"] {
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  border-radius: 3px;
-  background: #8bacde;
-} */
-/* input[type="radio"]:active,
-input[type="radio"]:focus {
-  border-radius: 8px;
-  background: #4586e7;
-} */
 /* buttons */
 .reset {
   border: none;
@@ -188,12 +176,15 @@ i {
   flex-direction: column;
   justify-content: center;
   gap: 20px;
-  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.48);
+
   overflow: hidden;
+  border-radius: 10px;
 }
 .img-container img {
   width: 100%;
-  height: 82vh;
+  max-width: 1000px;
+  max-height: 82vh;
   margin: auto;
   transform-origin: center center;
   object-fit: cover;

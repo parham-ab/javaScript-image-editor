@@ -42,7 +42,6 @@ sliderInputs.forEach((item) => {
     (noFlipBtn.checked = true), (choosenImg.style.transform = "none");
   });
 });
-// -----------reset button-----------
 // -----------zoom effect-----------
 imgBox.addEventListener("mousemove", onZoom);
 imgBox.addEventListener("mouseover", onZoom);
@@ -51,7 +50,7 @@ function onZoom(e) {
   const x = e.clientX - e.target.offsetLeft;
   const y = e.clientY - e.target.offsetTop;
   choosenImg.style.transformOrigin = `${x}px ${y}px`;
-  choosenImg.style.transform = "scale(2.5)";
+  choosenImg.style.transform = "scale(2)";
 }
 function offZoom(e) {
   choosenImg.style.transformOrigin = `center center`;

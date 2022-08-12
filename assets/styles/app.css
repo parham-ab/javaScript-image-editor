@@ -9,7 +9,8 @@
   user-select: none;
 }
 body {
-  font-family: tahoma;
+  font-family: "Quicksand", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 .img-editor {
   display: flex;
@@ -108,6 +109,17 @@ input[type="range"]:focus::-ms-fill-lower {
 }
 input[type="range"]:focus::-ms-fill-upper {
   background: #b3e3db;
+}
+input[type="radio"] {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  background: #8bacde;
+}
+input[type="radio"]:focus {
+  border-radius: 8px;
+  background: #4586e7;
 }
 /* buttons */
 .reset {
